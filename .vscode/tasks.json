@@ -1,0 +1,75 @@
+{
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceRoot}",
+        "env": {
+            "PATH": "C:\\MinGW\\bin;${env:PATH}"
+        },
+        "shell": {
+            "executable": "${env:SystemRoot}\\System32\\cmd.exe",
+            "args": [
+                "/C"
+            ]
+        }
+    },
+    "problemMatcher": {       
+        "owner": "cpp",
+        "fileLocation":["relative","${workspaceFolder}"],        
+        "pattern": {
+        "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+        "file": 1,         
+        "line": 2,         
+        "column": 3,           
+        "severity": 4,            
+        "message": 5       
+        }  
+    },
+    "type": "shell",
+    "tasks": [
+        {
+            "label": "Configure this project",
+            "command": "cmake.exe -DCMAKE_TOOLCHAIN_FILE=..\\cmake\\toolchain.cmake -S . -B .\\build -G Ninja",
+            "detail": "Build之前必须先执行Config命令, 生成Ninja构建工程，否则会出错"
+        },
+        {
+            "label": "Build",
+            "command": "cmake --build build --target all",
+            "dependsOn": [
+                "Configure this project"
+            ],
+            "detail": "执行增量的构建"
+        },
+        {
+            "label": "Rebuild all",
+            "command": "cmake --build build --target all --clean-first --",
+            "dependsOn": [
+                "Configure this project"
+            ],
+            "detail": "重新执行所有构建" 
+        },
+        {
+            "label": "Clean Build",
+            "command": "cmake --build build --target clean --",
+            "detail": "删除构建过程中的所有中间文件"
+        },
+        {
+            "label": "Run",
+            "command": ".\\bin\\${workspaceRootFolderName}.exe",
+            "detail": "执行编译出来的目标程序"
+        },
+        {
+            "label": "Build & Run",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build",
+                "Run"
+            ],
+            "detail": "执行增量构建并运行目标程序"
+        },
+        {
+            "label": "Open Shell for mingw",
+            "command": "cmd.exe",
+            "detail": "打开 mingw 的 Shell 窗口"
+        },
+    ]
+}
