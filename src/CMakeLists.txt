@@ -8,7 +8,7 @@
 #add_executable(home GetLongestFlawedVowelSubstrLen.c)
 #add_executable(home reverse_single_list.c)
 #add_executable(home maxLength_1239.c)
-add_executable(home longestRepeatingSubstring_1602.c)
+add_executable(home longestRepeatingSubstring_1062.c)
 
 target_include_directories(home PUBLIC ${CMAKE_SOURCE_DIR}/include)
 
