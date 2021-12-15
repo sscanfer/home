@@ -1,17 +1,5 @@
 # main.c 编译成一个可执行文件，因为里面包含 main 函数
-#add_executable(home main.c swap.c)
-#add_executable(home tlv.c)
-#add_executable(home find_judge.c)
-#add_executable(home sum_one_hundred.c)
-#add_executable(home min_area_rectangle939.c)
-#add_executable(home minSubArrayLen_209.c)
-#add_executable(home GetLongestFlawedVowelSubstrLen.c)
-#add_executable(home reverse_single_list.c)
-#add_executable(home maxLength_1239.c)
-#add_executable(home longestRepeatingSubstring_1062.c)
-#add_executable(home generic_test.c)
-add_executable(home two_sum_1.c)
-#add_executable(home main.c)
+add_executable(home main.c)
 
 target_include_directories(home PUBLIC ${CMAKE_SOURCE_DIR}/include)
 
