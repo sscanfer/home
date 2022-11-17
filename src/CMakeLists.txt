@@ -1,5 +1,5 @@
 # main.c 编译成一个可执行文件，因为里面包含 main 函数
-add_executable(home main.c)
+add_executable(home main.c shape.c rectangle.c circle.c)
 
 target_include_directories(home PUBLIC ${CMAKE_SOURCE_DIR}/include)
 
