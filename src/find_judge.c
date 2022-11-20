@@ -42,7 +42,7 @@ int main(int argc, char **argv)
         }
     }
     int trustSize = 0;
-    while (scanf("%d,%d", &trust[trustSize][0], &trust[trustSize][1]) == 2) {
+    while (scanf("%d, %d", &trust[trustSize][0], &trust[trustSize][1]) == 2) {
         trustSize++;
     }
 

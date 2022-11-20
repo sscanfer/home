@@ -2,25 +2,35 @@
 #include <stdbool.h>
 #include <limits.h>
 #include <string.h>
+#include "rectangle.h"
+#include "circle.h"
 
 int main(int argc, char **argv)
 {
-    printf("hello\n");
+    Rectangle r1, r2;
+    Circle    c1, c2;
 
-    union {
-        int k;
-        char x[4];
-        char i[2];
-    } *s, a;
-    s = &a;
+    const Shape *shapes[] = {
+        &c1.super,
+        &r2.super,
+        &c2.super,
+        &r1.super
+    };
 
-    printf("0x%d\n", s->k);
+    const Shape *s = NULL;
 
-    s->i[0] = 0x39;
-    s->i[1] = 0x38;
+    // 实例化矩形对象
+    Rectangle_Ctor(&r1, 0, 2, 10, 15);
+    Rectangle_Ctor(&r2, -1, 3, 5, 8);
 
-    printf("x[0] = 0x%x, x[1] = 0x%x\n", s->x[0], s->x[1]);
-    printf("k = 0x%x\n", s->k);
+    // 实例化圆形对象
+    Circle_Ctor(&c1, 1, -2, 12);
+    Circle_Ctor(&c2, 1, -3, 6);
+
+    s = Shape_GetLargest(shapes, sizeof(shapes) / sizeof(shapes[0]));
+    printf("largest shape s(x=%d,y=%d)\n", Shape_GetX(s), Shape_GetY(s));
+
+    Shape_DrawAll(shapes, sizeof(shapes) / sizeof(shapes[0]));
 
     return 0;
 }
